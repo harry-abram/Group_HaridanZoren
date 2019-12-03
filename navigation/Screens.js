@@ -9,6 +9,7 @@ import {
 import { Block } from "galio-framework";
 
 // screens
+import Logo from "../screens/Logo";
 import Home from "../screens/Home";
 import Onboarding from "../screens/Onboarding";
 import Pro from "../screens/Pro";
@@ -89,6 +90,19 @@ const ArticlesStack = createStackNavigator({
   transitionConfig
 });
 
+const LogoStack = createStackNavigator({
+  Logo: {
+    screen: Logo,
+    navigationOptions: ({ navigation }) => ({
+      header: <Header title="Logo" navigation={navigation} />
+    })
+  }
+},{
+  cardStyle: {
+    backgroundColor: "#F8F9FE"
+  },
+  transitionConfig
+});
 const ProfileStack = createStackNavigator(
   {
     Profile: {
@@ -115,11 +129,11 @@ const HomeStack = createStackNavigator(
         header: <Header search options title="Home" navigation={navigation} />
       })
     },
-    Pro: {
-      screen: Pro,
+    Logo: {
+      screen: Logo,
       navigationOptions: ({ navigation }) => ({
         header: (
-          <Header left={<Block />} white transparent title="" navigation={navigation} />
+          <Header left={<Block />} white transparent title="Logo" navigation={navigation} />
         ),
         headerTransparent: true
       })
@@ -159,11 +173,11 @@ const AppStack = createDrawerNavigator(
       })
     },
    
-    Articles: {
-      screen: ArticlesStack,
+    Logo: {
+      screen: LogoStack,
       navigationOptions: navOpt => ({
         drawerLabel: ({ focused }) => (
-          <DrawerItem focused={focused} screen="Articles" title="Gallery" />
+          <DrawerItem focused={focused} screen="Logo" title="Gallery" />
         )
       })
     }
